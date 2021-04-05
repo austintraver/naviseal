@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "target": "ESNext",
+        "lib": ["ESNext", "DOM"],
+        "sourceMap": true,
+        "moduleResolution": "Node"
+    },
+    "files": [
+        "background.ts",
+        "options.ts",
+        "popup.ts",
+        "naviseal.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        ".idea",
+        "*.zip"
+    ]
+}

@@ -1,0 +1,6 @@
+manifest.json
+*.css
+*.js
+*.html
+images/naviseal*
+!node_modules
