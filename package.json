@@ -5,9 +5,9 @@
   },
   "name": "naviseal",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "naviseal.js",
   "scripts": {
-    "build": "tsc; zip naviseal.zip --compression-method bzip2 --wild-stop-dirs --recurse-paths . -i@publish.txt"
+    "build": "tsc; zip naviseal.zip --compression-method deflate --wild-stop-dirs --recurse-paths . -i@publish.txt"
   },
   "author": "Austin Traver <support@austin.jp> (https://github.com/austintraver)",
   "license": "MIT",
