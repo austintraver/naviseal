@@ -7,7 +7,7 @@
   "version": "0.0.1",
   "main": "naviseal.js",
   "scripts": {
-    "build": "tsc; zip naviseal.zip --compression-method deflate --wild-stop-dirs --recurse-paths . -i@publish.txt"
+    "build": "zsh build.sh"
   },
   "author": "Austin Traver <support@austin.jp> (https://github.com/austintraver)",
   "license": "MIT",
