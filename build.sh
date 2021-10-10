@@ -1,13 +1,26 @@
+#!/bin/zsh
+
 tsc
 
-typeset archive='naviseal.zip'
-typeset publication='publish.txt'
-typeset package='package.json'
+source ${ZSH_SCRIPT:h}/.env
 
-zip ${archive} \
+mkdir -p \
+  ${ZSH_SCRIPT:h}/chrome \
+  ${ZSH_SCRIPT:h}/firefox
+
+zip "${ZSH_SCRIPT:h}/chrome/naviseal.zip" \
     --compression-method deflate \
     --wild-stop-dirs \
     --recurse-paths . \
-    -i@${publication}
+    -i@publish.txt
 
-git add ${archive} ${package}
+web-ext build \
+  --artifacts-dir "${ZSH_SCRIPT:h}/firefox" \
+  --overwrite-dest
+
+web-ext sign \
+  --artifacts-dir "${ZSH_SCRIPT:h}/firefox" \
+  --api-key=${AMO_JWT_ISSUER} \
+  --api-secret=${AMO_JWT_SECRET} \
+  --id '{2a3c73f9-7877-4b44-939e-f55dd85be49d}' \
+  --channel=unlisted

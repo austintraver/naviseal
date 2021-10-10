@@ -1,27 +1,8 @@
 {
   "name": "Naviseal",
-  "version": "0.0.2",
-  "manifest_version": 3,
+  "version": "0.2.2",
+  "manifest_version": 2,
   "description": "Better navigation while using a keyboard",
-  "background": {
-    "service_worker": "background.js"
-  },
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "/images/naviseal-16.png",
-      "32": "/images/naviseal-32.png",
-      "48": "/images/naviseal-48.png",
-      "64": "/images/naviseal-64.png",
-      "128": "/images/naviseal-128.png",
-      "256": "/images/naviseal-256.png",
-      "512": "/images/naviseal-512.png"
-    }
-  },
   "icons": {
     "16": "/images/naviseal-16.png",
     "32": "/images/naviseal-32.png",
@@ -31,7 +12,6 @@
     "256": "/images/naviseal-256.png",
     "512": "/images/naviseal-512.png"
   },
-  "options_page": "options.html",
   "content_scripts": [
     {
       "matches": [
@@ -40,7 +20,8 @@
       "js": [
         "naviseal.js"
       ],
-      "run_at": "document_start"
+      "run_at": "document_start",
+      "all_frames": true
     }
   ]
 }

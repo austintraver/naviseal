@@ -7,9 +7,6 @@
         "moduleResolution": "Node"
     },
     "files": [
-        "background.ts",
-        "options.ts",
-        "popup.ts",
         "naviseal.ts"
     ],
     "exclude": [

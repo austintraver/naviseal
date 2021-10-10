@@ -4,3 +4,6 @@ manifest.json
 *.html
 images/naviseal*
 !node_modules
+!.env
+!.git
+!.idea
