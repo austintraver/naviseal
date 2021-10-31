@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+setopt errexit
+
 tsc
 
 source ${ZSH_SCRIPT:h}/.env
@@ -15,12 +17,10 @@ zip "${ZSH_SCRIPT:h}/chrome/naviseal.zip" \
     -i@publish.txt
 
 web-ext build \
-  --artifacts-dir "${ZSH_SCRIPT:h}/firefox" \
   --overwrite-dest
 
 web-ext sign \
-  --artifacts-dir "${ZSH_SCRIPT:h}/firefox" \
   --api-key=${AMO_JWT_ISSUER} \
   --api-secret=${AMO_JWT_SECRET} \
-  --id '{2a3c73f9-7877-4b44-939e-f55dd85be49d}' \
-  --channel=unlisted
+
+#  --channel=unlisted

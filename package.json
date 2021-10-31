@@ -4,10 +4,10 @@
     "typescript": "^4.2.3"
   },
   "name": "naviseal",
-  "version": "0.2.2",
-  "main": "naviseal.js",
+  "version": "0.3.2",
   "scripts": {
-    "build": "zsh build.sh"
+    "build": "zsh build.sh",
+    "run": "web-ext run"
   },
   "author": "Austin Traver <support@austin.jp> (https://github.com/austintraver)",
   "license": "MIT",

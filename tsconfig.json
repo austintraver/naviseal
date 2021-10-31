@@ -3,15 +3,11 @@
         "module": "ESNext",
         "target": "ESNext",
         "lib": ["ESNext", "DOM"],
-        "sourceMap": true,
-        "moduleResolution": "Node"
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "noImplicitAny": true,
+        "outDir": "src",
     },
-    "files": [
-        "naviseal.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        ".idea",
-        "*.zip"
-    ]
+    "files": ["src/naviseal.ts"],
+    "compileOnSave": true,
 }
