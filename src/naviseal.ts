@@ -1,17 +1,9 @@
-/*
-Not yet checked for presence on page:
-www.google.com##.dRYYxd
-www.google.com##.pHiOh
-www.google.com##.wYq63b
-www.google.com##*[id^=eob_]
-www.google.com##a.gb_D
-www.google.com##a.gyPpGe
-
-Not yet found on page:
-- www.google.com##div.hpuQDe
-- www.google.com##div.P1usbc
-- www.google.com##span.lBbTb
- */
+// Format the style of focus borders such that it forms a square.
+function stylizeResults() {
+    document.querySelectorAll('a > h3').forEach((heading) => {
+        heading.parentElement.style['display'] = 'block'
+    })
+}
 
 // Delete the pesky accessibility pop-up modal.
 function removeAccessibilityPopup() {
@@ -29,12 +21,12 @@ function removeAccessibilityPopup() {
             continue
         }
         if (element.nextElementSibling.id !== "main") {
-            element.nextElementSibling.remove()
+            element.nextElementSibling?.remove()
             continue
         }
         element = element.nextElementSibling
     }
-    document.querySelector('body > h1').remove()
+    document.querySelector('body > h1')?.remove()
     return
 }
 
@@ -53,7 +45,7 @@ function removeOtherElements() {
             element.remove()
         }
     })
-    // Remove the search bar's magnifying glass
+    // Remove the search bar's magnifying glass.
     document.querySelector('button.Tg7LZd').remove()
     // Remove the "..." adjacent to each search result
     document.querySelectorAll('div.B6fmyf').forEach((element) => {
@@ -70,17 +62,23 @@ function removeOtherElements() {
         if (found) {
             element.remove()
         }
-        // if (element.getElementsByTagName('g-right-button').length > 0) {
-        //     element.remove()
-        // }
     })
     // Remove the "Feedback" requests.
     document.querySelectorAll('a.oBa0Fe').forEach((element) => {
         element.remove()
     })
+    // Remove any results that are displayed as a scrolling carousel.
+    document.querySelectorAll('g-scrolling-carousel').forEach(e => {
+        e.closest('.sATSHe')?.remove()
+        e.closest('.ULSxyf')?.remove()
+    })
+    // Remove any results that are displayed as a scrolling carousel.
+    document.querySelectorAll('g-section-with-header').forEach(e => {
+        e.remove()
+    })
 }
 
-// Prioritize the search result listings during tab completion
+// Prioritize the search result listings during tab completion.
 function prioritizeResults() {
     // Iteratively elevate the priority of each search result.
     const results: NodeListOf<HTMLAnchorElement> = document.querySelectorAll('a > h3')
@@ -89,17 +87,18 @@ function prioritizeResults() {
     })
 }
 
-/*
-document.addEventListener('keydown', () => {
-    removeAccessibilityPopup()
-    removeOtherElements()
-})
-*/
-
 document.addEventListener('DOMContentLoaded', () => {
     removeAccessibilityPopup()
     removeOtherElements()
     // prioritizeResults()
     // Focus the first search result, since the page has already finished loading.
-    document.querySelector('a > h3').parentElement.focus({preventScroll: true})
+    stylizeResults()
+    document.querySelector('a > h3')?.parentElement.focus({preventScroll: true})
+})
+
+document.addEventListener('focusin', (event: FocusEvent) => {
+    let firstResult = document.querySelector('a > h3').parentElement
+    if (event.currentTarget instanceof HTMLBodyElement) {
+        alert('yes')
+    }
 })

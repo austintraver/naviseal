@@ -22,5 +22,4 @@ web-ext build \
 web-ext sign \
   --api-key=${AMO_JWT_ISSUER} \
   --api-secret=${AMO_JWT_SECRET} \
-
-#  --channel=unlisted
+  --channel=unlisted
