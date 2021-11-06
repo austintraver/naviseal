@@ -6,3 +6,6 @@ credentials.json
 /.env
 *.xpi
 *.crx
+/chrome.pem
+/src.pem
+!/.idea

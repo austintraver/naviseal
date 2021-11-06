@@ -87,18 +87,21 @@ function prioritizeResults() {
     })
 }
 
+document.addEventListener('readystatechange', (event: Event) => {
+    if (new URL(window.location.href).searchParams.get('tbm') === 'isch') {
+        document.querySelector('div[role="navigation"]')?.remove()
+        document.querySelector('.islrc').querySelector('a').focus()
+    }
+})
+
 document.addEventListener('DOMContentLoaded', () => {
+    if (new URL(window.location.href).searchParams.get('tbm') === 'isch') {
+        return
+    }
     removeAccessibilityPopup()
     removeOtherElements()
     // prioritizeResults()
     // Focus the first search result, since the page has already finished loading.
     stylizeResults()
     document.querySelector('a > h3')?.parentElement.focus({preventScroll: true})
-})
-
-document.addEventListener('focusin', (event: FocusEvent) => {
-    let firstResult = document.querySelector('a > h3').parentElement
-    if (event.currentTarget instanceof HTMLBodyElement) {
-        alert('yes')
-    }
 })
